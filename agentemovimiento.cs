@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AgenteMovimiento : MonoBehaviour
+public class agentemovimiento : MonoBehaviour
 {
     NavMeshAgent agent;
 	
 	public Transform[] waypoints;
-	public int indexwaypoints = 0;
+	public int indexWaypoints = 0;
 	
-	public transform currentDestination;
+	public Transform currentDestination;
    
    
    [Header("Elementos del sensor")]
@@ -53,7 +53,7 @@ public class AgenteMovimiento : MonoBehaviour
 	   }
 	   else //cuando detecta al jugagor
 	   {
-		  currentDestination.position = tempPositionPlayer;
+		  currentDestination.position = TempPositionPlayer;
 		  
 		  agent.SetDestination(currentDestination.position);
 	   }   
@@ -71,30 +71,30 @@ public class AgenteMovimiento : MonoBehaviour
         if (colliders.Length == 0) //Si no hay objetos en los colisionadore
         {
             playerDetected = false; //No hay target
-			agent.stoppingDistant = 0f;
+			agent.stoppingDistance = 0f;
 			once = false;
         }
         else //Si no
         {
             playerDetected = true; //El target ha sido detectado
-			agent.stoppingDistant = 3f;
+			agent.stoppingDistance = 3f;
 			SetTempPosition();
         }
 	}
 	void SetTempPosition()
 	{
-		if(once == flase)
+		if(once == false)
 		{
-			tempPositionPlayer = player.transform.position;
+			TempPositionPlayer = player.transform.position;
 			once = true;
 		}			
-		tempPositionPlayer = player.transform.position;	
+		TempPositionPlayer = player.transform.position;	
 	}	
 	
 	private void OnDrawGizmos()
 	{
-		Gizmos.Color = Color.red;
-		Gizmos.DrawWireSphere(sensorPosition.position, radiusDestection);
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(sensorPosition.position, radiusDetection);
 	}	
 }
 

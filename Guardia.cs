@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class Guardia : MonoBehaviour
 {
+	public enum AgentState{Espera,Disparo,Patrullaje}
 	public AgentState currentState;
 	
 	NavMeshAgent agent;
 	
 	public Transform[] waypoints;
-	public int indexWaypoints = 0
+	public int indexWaypoints = 0;
 	
 	public Transform currentDestination;
 	
